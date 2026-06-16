@@ -1,0 +1,7 @@
+/* Cleared Vite template styles to prevent conflicts with Bootstrap and glassmorphism layouts */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #0d0614; /* Keep a dark base background */
+  color: #ffffff;
+}

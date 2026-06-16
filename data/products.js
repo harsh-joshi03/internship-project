@@ -1,0 +1,148 @@
+const products = [
+  {
+    name: 'Yamaha F310 Acoustic Guitar',
+    image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=500&auto=format&fit=crop&q=60',
+    description:
+      'The Yamaha F310 offers outstanding quality at a truly affordable price. The lively sound from the spruce/meranti body has a bright, sweet resonance with clean projection.',
+    brand: 'Yamaha',
+    category: 'Guitars',
+    price: 9990.00,
+    countInStock: 10,
+    rating: 4.5,
+    numReviews: 15,
+  },
+  {
+    name: 'Kadence Frontier Series Semi-Acoustic Guitar',
+    image: 'https://images.unsplash.com/photo-1550985543-f47f38aee65f?w=500&auto=format&fit=crop&q=60',
+    description:
+      'Kadence Frontier Series Acoustic Guitars are designed for absolute performance, featuring a rich tone and high-durability design perfect for students and pros alike.',
+    brand: 'Kadence',
+    category: 'Guitars',
+    price: 5499.00,
+    countInStock: 12,
+    rating: 4.2,
+    numReviews: 8,
+  },
+  {
+    name: 'Intern INT-38C Acoustic Guitar',
+    image: 'https://images.unsplash.com/photo-1485278537138-4e8911a13c02?w=500&auto=format&fit=crop&q=60',
+    description:
+      'A great cutaway acoustic guitar with linden wood build, smooth tuning pegs, and a rich, warm output. Ideal for beginners starting their musical journey.',
+    brand: 'Intern',
+    category: 'Guitars',
+    price: 2499.00,
+    countInStock: 20,
+    rating: 4.0,
+    numReviews: 24,
+  },
+  {
+    name: 'Yamaha TRBX174 Bass Guitar',
+    image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=500&auto=format&fit=crop&q=60',
+    description:
+      'The TRBX174 represents a price breakthrough for the TRBX range, yet the quality is everything you would expect from a Yamaha bass guitar.',
+    brand: 'Yamaha',
+    category: 'Guitars',
+    price: 18990.00,
+    countInStock: 5,
+    rating: 4.7,
+    numReviews: 6,
+  },
+  {
+    name: 'Kadence Concert Mahogany Ukulele',
+    image: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=500&auto=format&fit=crop&q=60',
+    description:
+      'Craft beautiful tunes with this premium concert mahogany ukulele. Features high-quality carbon strings, geared tuners, and a rich satin finish.',
+    brand: 'Kadence',
+    category: 'Guitars',
+    price: 3299.00,
+    countInStock: 8,
+    rating: 4.4,
+    numReviews: 10,
+  },
+  {
+    name: 'Yamaha Pacifica 112V Electric Guitar',
+    image: 'https://images.unsplash.com/photo-1551085254-e96b210db58a?w=500&auto=format&fit=crop&q=60',
+    description:
+      'Class-leading hardware, build quality, and setup. Features a solid alder body, custom-wound pickups, and a vintage-style tremolo bridge.',
+    brand: 'Yamaha',
+    category: 'Guitars',
+    price: 24990.00,
+    countInStock: 4,
+    rating: 4.8,
+    numReviews: 12,
+  },
+  {
+    name: 'Intern Concert Ukulele',
+    image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=500&auto=format&fit=crop&q=60',
+    description:
+      'Compact, bright, and fun. Crafted from spruce wood with a rosewood fretboard. Perfect for learning and easy travel.',
+    brand: 'Intern',
+    category: 'Guitars',
+    price: 1999.00,
+    countInStock: 15,
+    rating: 4.1,
+    numReviews: 9,
+  },
+  {
+    name: 'Yamaha CG122MS Classical Guitar',
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&auto=format&fit=crop&q=60',
+    description:
+      'Classical nylon-string guitar with a solid spruce top, matte finish, and a warm, clean classical tone with superb playability.',
+    brand: 'Yamaha',
+    category: 'Guitars',
+    price: 14990.00,
+    countInStock: 6,
+    rating: 4.6,
+    numReviews: 11,
+  },
+  {
+    name: 'Alice Premium Acoustic Guitar Strings Set',
+    image: 'https://images.unsplash.com/photo-1508186224219-0eee4707378b?w=500&auto=format&fit=crop&q=60',
+    description:
+      'Corrosion-resistant phosphor bronze acoustic guitar strings. Provides bright tone, longevity, and comfortable playability.',
+    brand: 'Intern',
+    category: 'Accessories',
+    price: 299.00,
+    countInStock: 50,
+    rating: 4.3,
+    numReviews: 32,
+  },
+  {
+    name: 'Kadence Quick-Change Guitar Capo',
+    image: 'https://images.unsplash.com/photo-1525201548942-d8c8b09d55f0?w=500&auto=format&fit=crop&q=60',
+    description:
+      'Lightweight aluminum alloy guitar capo. Strong steel spring provides firm clamp with no buzz. Compatible with acoustic/electric guitars.',
+    brand: 'Kadence',
+    category: 'Accessories',
+    price: 499.00,
+    countInStock: 35,
+    rating: 4.5,
+    numReviews: 18,
+  },
+  {
+    name: 'Yamaha Premium Cotton Guitar Strap',
+    image: 'https://images.unsplash.com/photo-1605020420620-20c943cc4669?w=500&auto=format&fit=crop&q=60',
+    description:
+      'Adjustable, comfortable, and durable guitar strap (belt). Made of premium cotton with leather ends for a secure fit.',
+    brand: 'Yamaha',
+    category: 'Accessories',
+    price: 899.00,
+    countInStock: 25,
+    rating: 4.6,
+    numReviews: 14,
+  },
+  {
+    name: 'Kadence Professional Dual-Action Truss Rod',
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&auto=format&fit=crop&q=60',
+    description:
+      'High-quality dual-action steel truss rod for luthiers and guitar repair. Ensures perfect neck relief adjustment.',
+    brand: 'Kadence',
+    category: 'Accessories',
+    price: 699.00,
+    countInStock: 15,
+    rating: 4.2,
+    numReviews: 7,
+  },
+];
+
+module.exports = products;

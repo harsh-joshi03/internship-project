@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Antigravity Auth</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom Premium Styles -->
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+    <!-- Dynamic background blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <!-- Login Card -->
+    <div class="auth-card">
+        <div class="text-center">
+            <h1 class="auth-title">Welcome Back</h1>
+            <p class="auth-subtitle">Please enter your details to sign in</p>
+        </div>
+        
+        <!-- Error Alert Container -->
+        <div id="errorAlert" class="alert alert-danger" style="display: none; border-radius: 12px; font-size: 0.9rem; background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.2); color: #ea868f;"></div>
+
+        <form id="loginForm" class="needs-validation" novalidate>
+            <!-- Email Input -->
+            <div class="form-group-custom">
+                <label for="email" class="input-label-custom">Email Address</label>
+                <div class="input-icon-wrapper">
+                    <input type="email" id="email" class="form-control-custom" placeholder="name@example.com" required autocomplete="username">
+                    <i class="bi bi-envelope field-icon"></i>
+                </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="form-group-custom">
+                <label for="password" class="input-label-custom">Password</label>
+                <div class="input-icon-wrapper">
+                    <input type="password" id="password" class="form-control-custom" placeholder="••••••••" required autocomplete="current-password">
+                    <i class="bi bi-lock field-icon"></i>
+                    <i class="bi bi-eye password-toggle" id="togglePassword"></i>
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="auth-options">
+                <label class="checkbox-custom">
+                    <input type="checkbox" id="rememberMe">
+                    <span>Remember me</span>
+                </label>
+                <a href="#" class="auth-link">Forgot password?</a>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-gradient">Sign In</button>
+        </form>
+
+        <!-- Footer Redirection Link -->
+        <div class="auth-footer">
+            Don't have an account? <a href="register.html" class="auth-link">Register here</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Page Logic -->
+    <script>
+        // Toggle password visibility
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            
+            // Toggle icons
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+        });
+
+        // Form Validation and submission response
+        const form = document.querySelector('#loginForm');
+        const errorAlert = document.getElementById('errorAlert');
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            errorAlert.style.display = 'none';
+            
+            if (!form.checkValidity()) {
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                
+                // Trigger shake effect for better interactivity
+                const card = document.querySelector('.auth-card');
+                card.classList.add('shake');
+                setTimeout(() => card.classList.remove('shake'), 400);
+            } else {
+                const email = document.getElementById('email').value;
+                const passwordVal = password.value;
+
+                try {
+                    const response = await fetch('/api/users/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email, password: passwordVal })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        // Store user details in localStorage
+                        localStorage.setItem('userInfo', JSON.stringify(data));
+                        // Redirect to store front page
+                        window.location.href = 'index.html';
+                    } else {
+                        // Display error message
+                        errorAlert.textContent = data.message || 'Login failed. Please check your credentials.';
+                        errorAlert.style.display = 'block';
+                        
+                        const card = document.querySelector('.auth-card');
+                        card.classList.add('shake');
+                        setTimeout(() => card.classList.remove('shake'), 400);
+                    }
+                } catch (error) {
+                    console.error('Error logging in:', error);
+                    errorAlert.textContent = 'Server connection failed. Please try again later.';
+                    errorAlert.style.display = 'block';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
