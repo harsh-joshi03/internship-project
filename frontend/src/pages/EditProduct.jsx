@@ -115,11 +115,11 @@ const EditProduct = () => {
         <button className="btn btn-outline-custom py-2 px-3" onClick={() => navigate('/admin/dashboard')}>
           <i className="bi bi-arrow-left"></i> Back to Dashboard
         </button>
-        <h3 className="fw-bold text-white mb-0">Edit Product</h3>
+        <h3 className="fw-bold mb-0">Edit Product</h3>
       </div>
 
       <div className="auth-card w-100 p-4">
-        <h4 className="fw-bold text-white mb-4 text-center">Modify Guitar Catalog Listing</h4>
+        <h4 className="fw-bold mb-4 text-center">Modify Guitar Catalog Listing</h4>
 
         {fetching && (
           <div className="text-center py-4">
@@ -150,7 +150,7 @@ const EditProduct = () => {
               <div className="input-icon-wrapper">
                 <input
                   type="text"
-                  className="form-control-custom text-white"
+                  className="form-control-custom"
                   placeholder="e.g., Yamaha F310 Acoustic Guitar"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -164,7 +164,7 @@ const EditProduct = () => {
               <div className="col-md-6 mb-3">
                 <label className="input-label-custom d-block mb-1 text-muted fs-7">Brand *</label>
                 <select
-                  className="form-select form-control-custom form-select-custom text-white w-100"
+                  className="form-select form-control-custom form-select-custom w-100"
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
                 >
@@ -177,7 +177,7 @@ const EditProduct = () => {
               <div className="col-md-6 mb-3">
                 <label className="input-label-custom d-block mb-1 text-muted fs-7">Category *</label>
                 <select
-                  className="form-select form-control-custom form-select-custom text-white w-100"
+                  className="form-select form-control-custom form-select-custom w-100"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
@@ -196,7 +196,7 @@ const EditProduct = () => {
                       type="number"
                       min="0"
                       step="0.01"
-                      className="form-control-custom text-white"
+                      className="form-control-custom"
                       placeholder="9990.00"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
@@ -214,7 +214,7 @@ const EditProduct = () => {
                     <input
                       type="number"
                       min="0"
-                      className="form-control-custom text-white"
+                      className="form-control-custom"
                       placeholder="10"
                       value={countInStock}
                       onChange={(e) => setCountInStock(e.target.value)}
@@ -229,7 +229,7 @@ const EditProduct = () => {
             <div className="form-group-custom mb-3">
               <label className="input-label-custom">Description *</label>
               <textarea
-                className="form-control-custom text-white py-2"
+                className="form-control-custom py-2"
                 style={{ minHeight: '100px', resize: 'vertical' }}
                 placeholder="Provide a detailed product description..."
                 value={description}
@@ -243,7 +243,7 @@ const EditProduct = () => {
               <input
                 type="file"
                 accept="image/*"
-                className="form-control form-control-custom text-white"
+                className="form-control form-control-custom"
                 onChange={handleImageChange}
               />
               {imagePreview && (

@@ -65,7 +65,7 @@ const AdminDashboard = () => {
   return (
     <div className="container my-5">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h3 className="fw-bold text-white mb-0">
+        <h3 className="fw-bold mb-0">
           <i className="bi bi-shield-lock me-2 text-warning"></i>Admin Product Control
         </h3>
         <Link to="/admin/add-product" className="btn btn-gradient px-4 py-2">
@@ -87,7 +87,7 @@ const AdminDashboard = () => {
       )}
 
       {!loading && !error && (
-        <div className="glass p-4 rounded-4" style={{ backgroundColor: 'rgba(20, 16, 32, 0.8)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+        <div className="glass p-4 rounded-4">
           <div className="table-responsive">
             <table className="table table-custom w-100 align-middle">
               <thead>
@@ -123,10 +123,10 @@ const AdminDashboard = () => {
                           }}
                         />
                       </td>
-                      <td className="fw-semibold text-white fs-7">{p.name}</td>
+                      <td className="fw-semibold fs-7">{p.name}</td>
                       <td className="text-muted fs-7">{p.brand}</td>
                       <td className="text-muted fs-7 text-capitalize">{p.category}</td>
-                      <td className="fw-semibold text-white fs-7">₹{p.price.toFixed(2)}</td>
+                      <td className="fw-semibold fs-7">₹{p.price.toFixed(2)}</td>
                       <td>
                         {p.countInStock > 0 ? (
                           <span className="badge bg-success-subtle text-success border border-success-subtle">
