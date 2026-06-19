@@ -96,6 +96,11 @@ const updateProduct = async (req, res) => {
       product.countInStock = countInStock !== undefined ? Number(countInStock) : product.countInStock;
       product.description = description || product.description;
 
+      // Assign user if missing to prevent validation errors
+      if (!product.user) {
+        product.user = req.user._id;
+      }
+
       if (req.file) {
         product.image = `/uploads/${req.file.filename}`;
       }
